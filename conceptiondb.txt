@@ -1,0 +1,24 @@
+Conception de la base de données biblio avec le SGBD Mysql:
+
+create database biblio character set'utf8';
+
+use biblio;
+
+create table abonne(
+idab int primary key,
+nomab varchar(100) not null)
+engine=innodb;
+
+create table livre(
+idlivre int primary key,
+titre varchar(90) not null,
+autheur varchar(50),
+disponible varchar(10) not null,
+idabonnee int)
+engine=innodb;
+
+alter table livre add constraint fk foreign key(idabonne)
+references abonne(idab);
+
+create view pret as select idlivre,titre,nomab from abonne inner join livre on
+abonne.idab=livre.idabonne;
