@@ -1,0 +1,80 @@
+<div class="card m-3">
+  <div class="card m-3" style="margin: 4rem !important;">
+    <h5 class="card-header" style="text-align: center;">Mise a jour une commande</h5>
+    <div class="card-body">
+      <form [formGroup]="registerFormUpdate">
+        <div class="form-row" style="PADDING-LEFT: 20%;">
+          <div class="form-group col-3">
+            <label>Code commande </label>
+            <select
+              [(ngModel)]="CODEa"
+              formControlName="CODE"
+              class="form-control"
+              (change)="valueChangeCodeOf($event)"
+              [ngClass]="{ 'is-invalid': submitted && f.CODEOF.errors }"
+            >
+              <div
+                *ngIf="submitted && f.CODEOF.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.CODEOF.errors.required">CodeOf required</div>
+              </div>
+              <option [ngValue]="undefined">Select Code</option>
+              <option
+                *ngFor="let obj of ListCodeOF"
+                [ngValue]="obj.codeof"
+                [selected]="obj.codeof == selectedIdCodeof"
+              >
+                {{ obj.codeof }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group col-5">
+            <label>poste de travaille </label>
+            <input
+              type="text"
+              [(ngModel)]="postSelectionne"
+              formControlName="poste_travaille"
+              class="form-control"
+            />
+            <div
+              *ngIf="submitted && f.poste_travaille.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.poste_travaille.errors.required">
+                poste is required
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="form-row" style="PADDING-LEFT: 12%;">
+          <div class="form-group col-5" style="PADDING-LEFT: 13%;">
+            <label>quantité demandée</label>
+            <input
+              type="text"
+              [(ngModel)]="quantitya"
+              formControlName="quantity"
+              class="form-control"
+            />
+            <!-- <div *ngIf="submitted && f.quantity.errors" class="invalid-feedback">
+                        <div *ngIf="f.quantity.errors.required">quantity is required</div>
+                    </div> -->
+          </div>
+
+          <div class="text-center"  style="padding: 3%;
+          PADDING-LEFT: 0%;">
+            <button class="btn btn-primary mr-1" (click)="Updatecommande()">
+              Mise a Jour
+            </button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

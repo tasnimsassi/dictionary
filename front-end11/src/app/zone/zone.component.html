@@ -1,0 +1,348 @@
+<!-- Boxicons CDN Link -->
+<head>
+  <link
+    href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<div class="row">
+  <div class="col-md-4">
+<div class="mb-3 card" >
+ 
+  <div class="no-gutters row">
+    <div class="col-sm-6 col-md-4 col-xl-4">
+      <div class="def5"> 
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+          <i class="pe-7s-album text-white opacity-8"></i></div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">Total quantity</div>
+          <div class="widget-numbers">{{totalQuantity? totalQuantity : '----'}}</div>
+      
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="col-md-4">
+  <div class="mb-3 card"  >
+    <div class="no-gutters row">
+     
+    <div class="col-sm-12 col-md-4 col-xl-4">
+      <div class="def1"> 
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-9 bg-success"></div>
+          <i class="pe-7s-light text-white"></i></div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">User</div>
+       
+          <p class="title" >{{sourcedata?.nom}}</p>
+          <p class="title" >{{sourcedata?.email}}</p>
+          <p class="title" >{{sourcedata?.tel}}</p>
+          <p class="title" >{{sourcedata?.rol}}</p>
+          
+       
+            <span class="text-warning pl-1">
+                <fa name="angle-up"></fa>
+               
+            </span>
+          
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+   
+  </div>
+  </div>
+  
+<div class="col-md-4">
+  <div class="mb-3 card"  Style="height: 84%;"  >
+ 
+  
+     
+    <div class="col-sm-12 col-md-4 col-xl-4">
+      <div class="def4"> 
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="card no-shadow rm-border bg-transparent widget-chart text-center">
+          <div class="icon-wrapper rounded-circle">
+            <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+            <i class="pe-7s-album text-white opacity-8"></i></div>
+         
+        <div class="widget-chart-content">
+          <div class="widget-subheading" style="text-align: center;">Quantity Scanned</div>
+       
+  <table style="width: 350px;   " *ngFor="let quantity of lastQuantity;">
+    <tr>
+   
+      <th>qte scan</th>
+         <th>date scan</th>
+      <th>id user</th>
+    </tr>
+    <tr>
+      <td>{{quantity.scanned_quantity}}</td>
+      <td> {{quantity.date_scan |  date:'yyyy-MM-dd h:mm:ss' }}</td>
+       <td> {{quantity.user_id  }}</td>
+    </tr>
+    
+  </table>
+  
+  
+          
+  
+  
+            
+            </div> 
+           
+          </div>  
+        </div>
+      </div>
+    </div>
+    
+    </div>
+   
+  
+  </div>
+</div>
+
+
+
+<div class="row" style="width: 102%;
+margin-top: -25%;">
+ 
+  <div class="col-md-6"> 
+   
+  <div class="mb-3 card " style="width: 128%" >
+    <div class="no-gutters row">
+    <div class="col-sm-6 col-md-4 col-xl-4">
+      <div class="def2"> 
+      <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+        <div class="icon-wrapper rounded-circle">
+          <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
+          <i class="pe-7s-portfolio text-white"></i></div>
+        <div class="widget-chart-content">
+          <div class="widget-subheading">keypass</div>
+          <form [formGroup]="productForm">
+            <div class="group">
+              <mat-form-field>
+                <input 
+                  id="keypass"
+                  type="text"
+                  matInput
+                  formControlName="keypass"
+                  required
+                  class="input"
+                  placeholder="enter the keypass"
+                  (ngModelChange)="getKeypass($event)"
+                />
+
+
+                <span *ngIf="!quantiteIsValid" style="color: red; size: 9px;font-size: 12px;"> max quantity depassed </span>
+
+                <mat-error
+                  *ngIf="
+                    productForm.controls.keypass.touched &&
+                    productForm.controls.keypass.invalid 
+                  "
+                >
+
+                  <span *ngIf="productForm.controls.keypass.errors.required"
+                    >this field is mandatory</span
+                  >
+                  <span *ngIf="productForm.controls.keypass.errors.pattern"
+                    >this field is invalid</span
+                  >
+                </mat-error>
+              </mat-form-field>
+              
+              <div class="group">
+              <mat-form-field>
+                <input 
+                  id="codeof"
+                  type="number"
+                  matInput
+                  formControlName="codeof"
+                  required
+                  class="input"
+                  placeholder="enter the job code"
+                  (ngModelChange)="getCodeOf($event)"
+
+                />
+                <mat-error
+                  *ngIf="
+                    productForm.controls.codeof.touched &&
+                    productForm.controls.codeof.invalid
+                  "
+                >
+                  <span *ngIf="productForm.controls.codeof.errors.required"
+                    >this field is mandatory</span
+                  >
+                  <span *ngIf="productForm.controls.codeof.errors.pattern"
+                    >this field is invalid</span
+                  >
+                </mat-error>
+              </mat-form-field>
+        </div>
+              <div class="group">
+                <input
+                  type="submit"
+                  class="button"
+                  value="send"
+                  (click)=" handleSubmit() "
+                  [disabled]="!(productForm.valid && productForm.dirty && quantiteIsValid )"
+                />
+              </div>
+            </div>
+          </form>
+         
+        </div>
+      </div>
+      <div class="divider m-0 d-md-none d-sm-block"></div>
+    </div>
+  </div>
+ 
+</div>
+</div>
+</div>
+  
+
+
+<body>
+  <section>
+    <div class="home-content">
+     
+      <button class="btn btn-primary" (click)="downloadAsPDF()">Export To PDF</button>
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">list of commands</div>
+          
+          <div class="sales-details">
+
+            <div class="responsive_table">
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">command code</th>
+                    <th scope="col">quantity requested</th>
+                    <th scope="col">parent command</th>
+                    <th scope="col">expected start date</th>
+                    <th scope="col">expected end date</th>
+                    <th scope="col">actual start date</th>
+                    <th scope="col">actual end date</th>
+                    <th scope="col">state</th>
+                    <th scope="col">poste</th>
+                    <th scope="col">quantity worked</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let data of datacom">
+                    <td>{{data?.codeof}}</td>
+                    <td>{{data?.qte_of}}</td>
+                    <td>{{data?.of_parent}}</td>
+                    <td>{{ data?.DATEDEBUTOF  |  date:'yyyy-MM-dd h:mm:ss' }}</td>
+                    <td>{{data?.DATEFINOF  |  date:'yyyy-MM-dd h:mm:ss'}}</td>
+                    <td>{{data?.DATEDEBUTREEL  |  date:'yyyy-MM-dd h:mm:ss'}}</td>
+                    <td>{{data?.DATEFINREEL  |  date:'yyyy-MM-dd h:mm:ss'}}</td>
+                    <td>{{data?.STATUT_OF}}</td>
+                    <td>{{data?.poste}}</td>
+                    <td>{{data?.QTE_TRAVAILLEE}}</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+              <hr>
+              <hr>
+              <hr>
+              <hr>
+              <hr>
+              <div class="row" style="margin-top: 5%;">
+                <div class="col-md-4">
+                  <p style="text-align: center;"><h6>inserer vos remarques ici si vous signalez un probleme au niveau d'une operation  </h6> 
+              <div class="input-group" style=" HEIGHT: 88%;">
+                <span class="input-group-text">REMARQUES</span>
+                <textarea class="form-control"  (change)="onChange($event)" (ngModelChange)="modelChange($event)" [(ngModel)]="Textcommentaire"    aria-label="With textarea"></textarea></div>
+           
+           </div>  
+           <div class="col-md-1">
+             </div>
+           <div class="col-md-4">
+             <h3>Operation :</h3>
+                <div class="form-check">
+                  <input class="form-check-input"  [(ngModel)]="radio" value="coupe" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                  <label style="margin-left: 6%;" class="form-check-label" for="flexRadioDefault1">       
+                    coupe
+                  </label>
+                </div>
+              
+                <div class="form-check">
+                  <input class="form-check-input"  [(ngModel)]="radio" value="assemblage" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <label style="margin-left: 6%;" class="form-check-label" for="flexRadioDefault2">
+                    assemblage
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input"  [(ngModel)]="radio" value="preparation" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                  <label style="margin-left: 6%;" class="form-check-label" for="flexRadioDefault2">
+                    preparation
+                  </label>
+                </div>
+                <div class="col-md-4">
+                <div class="col-auto">
+                  <button type="submit" (click)=" Submit() "class="btn btn-primary mb-3">SUBMIT</button>
+                </div>
+              </div></div>
+              </div>
+              
+              
+          </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+    </section>
+    <div style="display: none;padding: 0; margin: 0;" id="pdfTable" #pdfTable>
+      <table class="table" style="display: none;padding: 0; margin: 0;" > 
+        <thead>
+          <tr>
+            <th scope="col">command code</th>
+            <th scope="col">quantity requested</th>
+            <th scope="col">parent command</th>
+            <th scope="col">expected start date</th>
+            <th scope="col">expected end date</th>
+            <th scope="col">actual start date</th>
+            <th scope="col">actual start date</th>
+            <th scope="col">state</th>
+            <th scope="col">poste</th>
+            <th scope="col">quantity worked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let data of finishedCommandes">
+            <td>{{data?.codeof}}</td>
+            <td>{{data?.qte_of}}</td>
+            <td>{{data?.of_parent}}</td>
+            <td>{{ data?.DATEDEBUTOF  |  date:'yyyy-MM-dd h:mm:ss' }}</td>
+            <td>{{data?.DATEFINOF  |  date:'yyyy-MM-dd h:mm:ss'}}</td>
+            <td>{{data?.DATEDEBUTREEL  |  date:'yyyy-MM-dd h:mm:ss'}}</td>
+            <td>{{data?.DATEFINREEL  |  date:'yyyy-MM-dd h:mm:ss'}}</td>
+            <td>{{data?.STATUT_OF}}</td>
+            <td>{{data?.poste}}</td>
+            <td>{{data?.QTE_TRAVAILLEE}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  
+</body>

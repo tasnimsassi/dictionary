@@ -1,0 +1,230 @@
+<!-- <div class="card m-3">
+  <h5 class="text-center"><i> Ajouter une commande </i></h5>
+  <form [formGroup]="registerForm" onsubmit="donothing">
+    <div class="form-group">
+      <div class="form-row">
+       <div class="form-group col-3">
+        
+        <label>code projet</label>
+        <input
+          type="text"
+          [(ngModel)]="stocktext"
+          formControlName="CODE_PROJET"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.CODE_PROJET.errors }"
+        />
+        <div *ngIf="submitted && f.CODE_PROJET.errors" class="invalid-feedback">
+          <div *ngIf="f.CODE_PROJET.errors.required">code is required</div>
+        </div>
+
+        <div class="form-group ">
+          <label>Qte en stock </label>
+          <input
+            type="text"
+            [(ngModel)]="QTE_OF"
+            formControlName="QTE_OF"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.QTE_OF.errors }"
+          />
+          <div *ngIf="submitted && f.QTE_OF.errors" class="invalid-feedback">
+            <div *ngIf="f.QTE_OF.errors.required">QteStock is required</div>
+          </div>
+        </div></div> </div>
+        <div class="form-group">
+          <div class="form-group col-3">
+          <label>of parent </label>
+          <input
+            type="text"
+            [(ngModel)]="OF_PARENT"
+            formControlName="OF_PARENT"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.OF_PARENT.errors }"
+          />
+          <div *ngIf="submitted && f.OF_PARENT.errors" class="invalid-feedback">
+            <div *ngIf="f.OF_PARENT.errors.required">OF PARENT is required</div>
+          </div>
+        </div></div></div>
+        <div class="form-group">
+          <div class="form-group col-3">
+          <label>date debut </label>
+          <input
+            type="date"
+            [(ngModel)]="DescriptionText"
+            formControlName="DATEDEBUTOF"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.DATEDEBUTOF.errors }"
+          />
+          <div
+            *ngIf="submitted && f.DATEDEBUTOF.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.DATEDEBUTOF.errors.required">date is required</div>
+          </div>
+        </div>
+     
+
+      <div class="form-group">
+        <div class="form-group col-3">
+        <label>date fin</label>
+        <input
+          type="date"
+          [(ngModel)]="UAtext"
+          formControlName="DATEFINOF"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.DATEFINOF.errors }"
+        />
+        <div *ngIf="submitted && f.DATEFINOF.errors" class="invalid-feedback">
+          <div *ngIf="f.DATEFINOF.errors.required">date fin is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>poste de travaille</label>
+        <input
+          type="text "
+          [(ngModel)]="UVtext"
+          formControlName="poste"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.poste.errors }"
+        />
+        <div *ngIf="submitted && f.poste.errors" class="invalid-feedback">
+          <div *ngIf="f.poste.errors.required">poste is required</div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="text-center">
+      <button class="btn btn-primary mr-1" (click)="onSubmitcommande()">
+        Sauvegarder
+      </button>
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div> -->
+
+
+
+
+
+
+
+
+
+<div class="content-content">
+    
+  <!-- main app container -->
+  <div class="card m-3">
+    <div class="card m-3" style="margin: 4rem !important;">
+     <h5 class="text-center"><i> Ajouter une commande </i></h5>
+    <div class="card-body">
+      <div class="card m-3" >
+       <form [formGroup]="registerForm" >
+         <div class="form-row">
+           <div class="form-group col-3">
+            <label>code projet</label>
+            <input
+              type="text"
+              [(ngModel)]="stocktext"
+              formControlName="CODE_PROJET"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.CODE_PROJET.errors }"
+            />
+            <div *ngIf="submitted && f.CODE_PROJET.errors" class="invalid-feedback">
+              <div *ngIf="f.CODE_PROJET.errors.required">code is required</div>
+            </div>
+          </div>
+
+
+          <div class="form-group col-3">
+            <label>Qte en stock </label>
+          <input
+            type="text"
+            [(ngModel)]="QTE_OF"
+            formControlName="QTE_OF"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.QTE_OF.errors }"
+          />
+          <div *ngIf="submitted && f.QTE_OF.errors" class="invalid-feedback">
+            <div *ngIf="f.QTE_OF.errors.required">QteStock is required</div>
+          </div>
+          </div>
+
+
+
+          <div class="form-group col-5">
+              <label>of parent </label>
+          <input
+            type="text"
+            [(ngModel)]="OF_PARENT"
+            formControlName="OF_PARENT"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.OF_PARENT.errors }"
+          />
+          <div *ngIf="submitted && f.OF_PARENT.errors" class="invalid-feedback">
+            <div *ngIf="f.OF_PARENT.errors.required">OF PARENT is required</div>
+          </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-3">
+            <label>poste de travaille</label>
+            <input
+              type="text "
+              [(ngModel)]="UVtext"
+              formControlName="poste"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.poste.errors }"
+            />
+            <div *ngIf="submitted && f.poste.errors" class="invalid-feedback">
+              <div *ngIf="f.poste.errors.required">poste is required</div>
+            </div>
+          </div>
+
+          <div class="form-group col-3">
+            <label>date debut </label>
+          <input
+            type="date"
+            [(ngModel)]="DescriptionText"
+            formControlName="DATEDEBUTOF"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.DATEDEBUTOF.errors }"
+          />
+          <div
+            *ngIf="submitted && f.DATEDEBUTOF.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.DATEDEBUTOF.errors.required">date is required</div>
+          </div>
+          </div>
+          <div class="form-group col-5">
+            <label>date fin</label>
+            <input
+              type="date"
+              [(ngModel)]="UAtext"
+              formControlName="DATEFINOF"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.DATEFINOF.errors }"
+            />
+            <div *ngIf="submitted && f.DATEFINOF.errors" class="invalid-feedback">
+              <div *ngIf="f.DATEFINOF.errors.required">date fin is required</div>
+            </div>
+          </div>
+        </div>
+       
+          
+         
+      
+
+        <div class="text-center">
+          <button class="btn btn-primary mr-1" (click)="onSubmitcommande()">
+            Sauvegarder
+          </button>
+          <button class="btn btn-secondary" type="reset" (click)="onReset()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div></div></div>
+</div>

@@ -1,0 +1,757 @@
+<div class="row">
+  <input
+    type="search"
+    class="rounded"
+    style="margin-top: 20px; margin-left: 20px"
+    [(ngModel)]="filterString"
+    (ngModelChange)="onFilterChange()"
+    placeholder="Search"
+    placeholder="Search"
+    aria-label="Search"
+    aria-describedby="search-addon"
+  />
+  <!-- <button type="button" class="btn btn-outline-primary">search</button> -->
+
+  <button
+    type="button"
+    style="margin-top: 20px; margin-left: 20px"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#exampleModal"
+    (click)="openModal(template)"
+  >
+    Ajouter des nouveaux produit
+  </button>
+  <button
+    type="button"
+    style="margin-top: 20px; margin-left: 20px"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#exampleModal"
+    (click)="openModal(template6)"
+  >
+    Ajouter un nouveau site
+  </button>
+  <button
+    type="button"
+    style="margin-top: 20px; margin-left: 20px"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#exampleModal"
+    (click)="openModal(template7)"
+  >
+    Ajouter un nouveau emplacement
+  </button>
+</div>
+<div style="margin-top: 20px">
+  <div class="main-card mb-3 card">
+    <div class="card-body">
+      <h5 class="card-title">Liste des produits</h5>
+      <table class="mb-0 table table-striped">
+        <thead>
+          <tr>
+            <th>Code de produit</th>
+            <th>Code grp</th>
+            <th>Description</th>
+            <th>Unite Achat</th>
+            <th>Unite Vente</th>
+            <th>Qte Dispo</th>
+
+            <th>Site</th>
+            <th>Emplacemnt</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filtered">
+            <th scope="row">{{ item.CODE_ARTICLE }}</th>
+            <td>{{ item.GRP_ARTICLE }}</td>
+            <td>{{ item.DESCRIPTION }}</td>
+            <td>{{ item.UNITE_ACHAT }}</td>
+            <td>{{ item.UNITE_VENTE }}</td>
+            <td>{{ item.qte_dispo }}</td>
+            <td>{{ item.nom_site }}</td>
+            <td>{{ item.nom_emplacement }}</td>
+
+            <td>
+              <button
+                class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"
+                (click)="supprimerproduit(item.CODE_ARTICLE)"
+              >
+                <i class="pe-7s-trash btn-icon-wrapper"> </i>
+              </button>
+            </td>
+
+            <td>
+              <button
+                class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"
+                (click)="openModal4(template4, item.CODE_ARTICLE)"
+              >
+                <i class="pe-7s-pin btn-icon-wrapper"> </i>
+              </button>
+            </td>
+
+            <td>
+              <button
+                class="btn-icon btn-icon-only btn btn-warning"
+                data-toggle="modal"
+                data-target="#exampleModal2"
+                (click)="openModal2(template2, item.CODE_ARTICLE)"
+              >
+                <i class="pe-7s-edit btn-icon-wrapper"> </i>
+              </button>
+            </td>
+
+            <td>
+              <button
+                class="btn-icon btn-icon-only btn btn-success"
+                data-toggle="modal"
+                data-target="#exampleModal3"
+                (click)="openModal3(template3, item.CODE_ARTICLE)"
+              >
+                <i class="pe-7s-repeat btn-icon-wrapper"> </i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- </app-componentb> -->
+
+<ng-template #template>
+  <div class="content-content">
+    
+    <!-- main app container -->
+    <div class="card m-3">
+      <h5 class="card-header">Ajouter un nouveau produit</h5>
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmitProduit()">
+          <div class="form-row">
+            <div class="form-group col-3">
+              <label>Code OF</label>
+              <select
+                [(ngModel)]="selectedIdCodeof"
+                formControlName="CODEOF"
+                class="form-control"
+                (change)="valueChangeCodeOf($event)"
+                [ngClass]="{ 'is-invalid': submitted && f.CODEOF.errors }"
+              >
+                <div
+                  *ngIf="submitted && f.CODEOF.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.CODEOF.errors.required">CodeOf required</div>
+                </div>
+                <option [ngValue]="undefined">Select Code</option>
+                <option
+                  *ngFor="let obj of ListCodeOF"
+                  [ngValue]="obj.codeof"
+                  [selected]="obj.codeof == selectedIdCodeof"
+                >
+                  {{ obj.codeof }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-3">
+              <label>Qte en stock </label>
+              <input
+                type="text"
+                formControlName="qte_dispo"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.qte_dispo.errors }"
+              />
+              <div
+                *ngIf="submitted && f.qte_dispo.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.qte_dispo.errors.required">
+                  QteStock is required
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-5">
+              <label>Descrip. Produit </label>
+              <input
+                type="text"
+                formControlName="DESCRIPTION"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.DESCRIPTION.errors }"
+              />
+              <div
+                *ngIf="submitted && f.DESCRIPTION.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.DESCRIPTION.errors.required">
+                  DESCRIPTION is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-3">
+              <label>Unité d'achat</label>
+              <input
+                type="text"
+                formControlName="UNITE_ACHAT"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.UNITE_ACHAT.errors }"
+              />
+              <div
+                *ngIf="submitted && f.UNITE_ACHAT.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.UNITE_ACHAT.errors.required">
+                  UNITE_ACHAT is required
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-3">
+              <label>Unité de vente </label>
+              <input
+                type="text"
+                formControlName="UNITE_VENTE"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.UNITE_VENTE.errors }"
+              />
+              <div
+                *ngIf="submitted && f.UNITE_VENTE.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.UNITE_VENTE.errors.required">
+                  Unite Vene is required
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-5">
+              <label>Empalcement </label>
+              <select
+                [(ngModel)]="selectedIdEmp"
+                formControlName="id_emplacement"
+                class="form-control"
+                (change)="valueChangeEmp($event)"
+                [ngClass]="{
+                  'is-invalid': submitted && f.id_emplacement.errors
+                }"
+              >
+                <div
+                  *ngIf="submitted && f.id_emplacement.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.id_emplacement.errors.required">
+                    Empalcement required
+                  </div>
+                </div>
+                <option [ngValue]="undefined">Select Empalcement</option>
+                <option
+                  *ngFor="let obj of ListEmp"
+                  [ngValue]="obj.id_emplacement"
+                  [selected]="obj.id_emplacement == selectedIdEmp"
+                >
+                  {{ obj.nom_emplacement }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>site </label>
+              <!-- <input type="text" formControlName="id_site" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id_site.errors }" />
+                <div *ngIf="submitted && f.id_site.errors" class="invalid-feedback">
+                    <div *ngIf="f.id_site.errors.required">Site required</div>
+                </div> -->
+              <select
+                [(ngModel)]="selectedIdSite"
+                formControlName="id_site"
+                class="form-control"
+                (change)="valueChange($event)"
+                [ngClass]="{ 'is-invalid': submitted && f.id_site.errors }"
+              >
+                <div
+                  *ngIf="submitted && f.id_site.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.id_site.errors.required">Site required</div>
+                </div>
+                <option [ngValue]="undefined">Select Site</option>
+                <option
+                  *ngFor="let obj of ListSite"
+                  [ngValue]="obj.id_site"
+                  [selected]="obj.id_site == selectedIdSite"
+                >
+                  {{ obj.nom_site }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label>Code grp </label>
+              <input
+                type="text"
+                formControlName="GRP_ARTICLE"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.GRP_ARTICLE.errors }"
+              />
+              <div
+                *ngIf="submitted && f.GRP_ARTICLE.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.GRP_ARTICLE.errors.required">
+                  code Grp is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary mr-1">Sauvegarder</button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #template2>
+  <div class="content-content">
+   
+    <!-- main app container -->
+    <div class="card m-3">
+      <h5 class="card-header">Mise a jour le produit {{ codeArticle }}</h5>
+      <div class="card-body">
+        <form [formGroup]="registerForm">
+          <div class="form-row">
+            <div class="form-group col-3">
+              <label>Code commande</label>
+              <select
+                [(ngModel)]="selectedIdCodeof"
+                formControlName="CODEOF"
+                class="form-control"
+                (change)="valueChangeCodeOf($event)"
+              >
+                <option [ngValue]="undefined" disabled>Select Code</option>
+                <option
+                  *ngFor="let obj of ListCodeOF"
+                  [ngValue]="obj.codeof"
+                  [selected]="obj.codeof == selectedIdCodeof"
+                >
+                  {{ obj.codeof }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-3">
+              <label>Qte en stock </label>
+              <input
+                type="text"
+                [(ngModel)]="stocktext"
+                formControlName="qte_dispo"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.qte_dispo.errors }"
+              />
+            </div>
+            <div class="form-group col-5">
+              <label>Descrip. Produit </label>
+              <input
+                type="text"
+                [(ngModel)]="DescriptionText"
+                formControlName="DESCRIPTION"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-3">
+              <label>Unité d'achat</label>
+              <input
+                type="text"
+                [(ngModel)]="UAtext"
+                formControlName="UNITE_ACHAT"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col-3">
+              <label>Unité de vente </label>
+              <input
+                type="text "
+                [(ngModel)]="UVtext"
+                formControlName="UNITE_VENTE"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col-5">
+              <label>Empalcement </label>
+              <select
+                [(ngModel)]="selectedIdEmp"
+                formControlName="id_emplacement"
+                class="form-control"
+                (change)="valueChangeEmp($event)"
+              >
+                <option [ngValue]="undefined" disabled>
+                  Select Empalcement
+                </option>
+                <option
+                  *ngFor="let obj of ListEmp"
+                  [ngValue]="obj.id_emplacement"
+                  [selected]="obj.id_emplacement == selectedIdEmp"
+                >
+                  {{ obj.nom_emplacement }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>site </label>
+              <!-- <input type="text" formControlName="id_site" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id_site.errors }" />
+                <div *ngIf="submitted && f.id_site.errors" class="invalid-feedback">
+                    <div *ngIf="f.id_site.errors.required">Site required</div>
+                </div> -->
+              <select
+                [(ngModel)]="selectedIdSite"
+                formControlName="id_site"
+                class="form-control"
+                (change)="valueChange($event)"
+              >
+                <option [ngValue]="undefined" disabled>Select Site</option>
+                <option
+                  *ngFor="let obj of ListSite"
+                  [ngValue]="obj.id_site"
+                  [selected]="obj.id_site == selectedIdSite"
+                >
+                  {{ obj.nom_site }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <label>Code grp </label>
+              <input
+                type="text   "
+                [(ngModel)]="grptext"
+                formControlName="GRP_ARTICLE"
+                class="form-control"
+              />
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary mr-1" (click)="UpdateProduits11()">
+              Mise a Jour
+            </button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #template3>
+  <div class="content-content">
+   
+    <!-- main app container -->
+    <div class="card m-3">
+      <h5 class="card-header">Transfert produit {{ codeArticle }}</h5>
+      <div class="card-body">
+        <form [formGroup]="registerFormTransfert" (ngSubmit)="Transfert()">
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Code Prod. a transfere </label>
+              <input
+                type="text"
+                [(ngModel)]="codeArticle"
+                formControlName="CODE_ARTICLE"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col">
+              <label>Qte a transferer </label>
+              <input
+                type="text"
+                [(ngModel)]="Qte_Transfertdata"
+                formControlName="Qte_Transfert"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': submittedTransfert && ft.Qte_Transfert.errors
+                }"
+              />
+              <div
+                *ngIf="submittedTransfert && ft.Qte_Transfert.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="ft.Qte_Transfert.errors.required">
+                  Qte_Transfert is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>From site </label>
+              <input
+                [disabled]="true"
+                [(ngModel)]="selectedIdSiteTransfert"
+                formControlName="id_site"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col">
+              <label>To site </label>
+              <select
+                type="text"
+                formControlName="To_id_site"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': submittedTransfert && ft.To_id_site.errors
+                }"
+              >
+                <div
+                  *ngIf="submittedTransfert && ft.To_id_site.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="ft.To_id_site.errors.required">
+                    To_Id_site is required
+                  </div>
+                </div>
+                <option [ngValue]="undefined">Select Site</option>
+                <option
+                  *ngFor="let obj of ListSite"
+                  [ngValue]="obj.id_site"
+                  [selected]="obj.id_site == selectedIdSite"
+                >
+                  {{ obj.nom_site }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>From Emplacement </label>
+              <input
+                type="text"
+                [(ngModel)]="selectidempalcemntTransfert"
+                formControlName="id_emplacement"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group col">
+              <label>To Emplacement </label>
+              <select
+                type="text"
+                formControlName="To_id_emplacement"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid':
+                    submittedTransfert && ft.To_id_emplacement.errors
+                }"
+              >
+                <div
+                  *ngIf="submittedTransfert && ft.To_id_emplacement.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="ft.To_id_emplacement.errors.required">
+                    To_id_emplacement is required
+                  </div>
+                </div>
+                <option [ngValue]="undefined">Select Empalcement</option>
+                <option
+                  *ngFor="let obj of ListEmp"
+                  [ngValue]="obj.id_emplacement"
+                  [selected]="obj.id_emplacement == selectedIdEmp"
+                >
+                  {{ obj.nom_emplacement }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Date Transfert </label>
+              <input
+                type="date"
+                [(ngModel)]="dateTransfert"
+                formControlName="date_transfert"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': submittedTransfert && ft.date_transfert.errors
+                }"
+              />
+              <div
+                *ngIf="submittedTransfert && ft.date_transfert.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="ft.date_transfert.errors.required">
+                  date_transfert required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Status Transfert </label>
+              <input
+                type="text"
+                [(ngModel)]="statutTransfert"
+                formControlName="status_transfert"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': submittedTransfert && ft.status_transfert.errors
+                }"
+              />
+              <div
+                *ngIf="submittedTransfert && ft.status_transfert.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="ft.status_transfert.errors.required">
+                  status_transfert required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary mr-1">Transferer</button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #template4>
+  <div class="modal-body modal-lg">
+  
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <!-- main app container -->
+    <div class="card m-3">
+      <h5 class="card-header">List Transfert </h5>
+   
+      <div class="card-body">
+    <div>
+      <div class="main-card mb-3 card">
+        <div class="card-body">
+          <span *ngIf="chakcdatatransfert == '1'   ">
+           <table class="mb-0 table table-striped">
+            <thead>
+              <tr>
+                <th>Code Trans.</th>
+                <th>Qte Trns.</th>
+                <th>from site</th>
+                <th>to site</th>
+                <th>from emp.</th>
+                <th>to emp.</th>
+    
+                <th>date</th>
+                <th>status</th>
+                <th>code article</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of ListTransfert">
+                <th scope="row">{{ item.id_ot }}</th>
+                <td>{{item.qte_transeree }}</td>
+                <td>{{ item.from_site }}</td>
+                <td>{{ item.nom_site }}</td>
+                <td>{{ item.from_emplacement }}</td>
+                <td>{{ item.nom_emplacement }}</td>
+                <td>{{ item.date_transfert  |  date:'yyyy-MM-dd h:mm:ss' }}</td>
+                <td>{{ item.status_transfert }}</td>
+                <td>{{ item.CODE_ARTICLE }}</td>
+    
+                 
+              </tr>
+            </tbody>
+          </table>
+          </span>
+
+          <span *ngIf="chakcdatatransfert == '0'   ">
+<h3>No data for this Product</h3>
+
+            </span>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+  
+</ng-template>
+
+<ng-template #template6>
+  <div class="content-content">
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      
+  
+    <!-- main app container -->
+    <div class="card m-3">
+      <h5 class="text-center"><i> Ajouter un nouveau site </i></h5>
+      <div class="input-group mb-3">
+        <input
+        type="text" placeholder="ajouter nom site"
+        [(ngModel)]="textsiteadd"
+       
+        class="form-control"/>
+        <div class="input-group-append">
+          <button class="btn btn-primary mb-3" (click)="addsite()" type="button">Sauvegarder</button>
+        </div>
+      </div>
+    
+          </div>
+        </div>
+      
+   
+</ng-template>
+
+
+
+<ng-template #template7>
+  <div class="content-content">
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()" >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    
+
+  <!-- main app container -->
+  <div class="card m-3">
+    <h5 class="text-center"><i> Ajouter un nouveau emplacement </i></h5>
+    <div class="input-group mb-3">
+      <input
+      type="text" placeholder="ajouter nom emplacement"
+      [(ngModel)]="textemplecementadd"
+    
+      class="form-control"/>
+      <div class="input-group-append">
+        <button class="btn btn-primary mb-3" (click)="addemplacement()" type="button" >Sauvegarder</button>
+      </div>
+    </div>
+  
+        </div>
+      </div>
+</ng-template>

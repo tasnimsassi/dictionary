@@ -1,0 +1,294 @@
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky"    >
+  <div class="container">
+    <!-- Logo container-->
+    <!-- <div>
+      <a class="logo" routerLink="/index" *ngIf="navClass !== 'nav-light'">
+        <img src="assets/images/logo-dark.png" class="l-dark" height="24" alt="">
+        <img src="assets/images/logo-dark.png" class="l-light" height="24" alt="">
+      </a>
+      <a class="logo" routerLink="/index" *ngIf="navClass === 'nav-light'">
+        <img src="assets/images/logo-dark.png" class="l-dark" height="24" alt="">
+        <img src="assets/images/logo-light.png" class="l-light" height="24" alt="">
+      </a>
+    </div> -->
+    <div class="buy-button">
+      <ng-template [ngIf]="navClass === 'nav-light'">
+        <a  routerLink="/login" class="btn btn-primary login-btn-primary">Login</a>
+          <a  routerLink="/login" class="btn btn-light login-btn-light">Login</a>
+      </ng-template>
+      <ng-template [ngIf]="navClass !== 'nav-light'">
+          <a  routerLink="/login" class="btn btn-primary" >Login</a>
+      </ng-template>
+
+    </div>
+    <div class="buy-button">
+      <ng-template [ngIf]="navClass === 'nav-light'">
+        <a  routerLink="/signup" class="btn btn-primary login-btn-primary">signup</a>
+          <a  routerLink="/signup" class="btn btn-light login-btn-light">signup</a>
+      </ng-template>
+      <ng-template [ngIf]="navClass !== 'nav-light'">
+          <a  routerLink="/signup" class="btn btn-primary" >signup</a>
+      </ng-template>
+
+    </div>
+
+    <!--end login button-->
+    <!-- End Logo container-->
+    <div class="menu-extras">
+      <div class="menu-item">
+        
+        <!-- Mobile menu toggle-->
+        <a class="navbar-toggle"  >
+          <div class="lines">
+            <span>
+              
+            </span>
+            <span></span>
+            <span></span>
+          </div>
+        </a>
+        <!-- End mobile menu toggle-->
+      </div>
+    </div>
+
+ 
+    <!--end navigation-->
+  </div>
+  <!--end container-->
+</header>
+<!--end header-->
+<!-- Navbar End --><!-- Hero Start -->
+<section class="main-slider" id="home">
+  <ngb-carousel class="slides" [showNavigationArrows]="showNavigationArrows"
+    [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template ngbSlide>
+      <li class="bg-slider bg-animation-left d-flex align-items-center"
+      style="background-image:url('assets/images/img/back.jpg')">
+        <div class="container">
+          <div class="row align-items-center">
+        
+            <div class="col-lg-7 col-md-7">
+              <div class="title-heading position-relative mt-4" style="z-index: 1;">
+                <img style="    vertical-align: middle;
+                border-style: double;
+                border-radius: 80%;
+                width: 233px;
+                padding-left: 0px;
+                margin-left: 150px;" src="assets/images/user/logo2.png"   alt="">
+                <h1 class="heading mb-3">manufacturing execution system</h1>
+                <p class="para-desc"> c'est un systeme de pilotage de la production , collectant en temps réel les données de production d'une usine ou d'un atelier.</p>
+                <div class="watch-video mt-4 pt-2">
+                  <a  href="https://www.youtube.com/watch?v=YctPWZ4kr_s"
+                    class="video-play-icon watch text-dark"><i
+                      class="mdi mdi-play play-icon-circle text-center d-inline-block mr-2 rounded-circle text-white title-dark position-relative play play-iconbar"></i>
+                    WATCH VIDEO</a>
+                  <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- <youtube-player [videoId]="'jNTZpfXYJa4'" height="450" width="780">
+                      </youtube-player> -->
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ng-template>
+    <ng-template ngbSlide>
+      <li class="bg-slider bg-animation-left d-flex align-items-center"
+        style="background-image:url('assets/images/img/mes5.jpg')">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-7 col-md-7">
+              <div class="title-heading position-relative mt-4" style="z-index: 1;">
+                <img style="    vertical-align: middle;
+                border-style: double;
+                border-radius: 80%;
+                width: 233px;
+                padding-left: 0px;
+                margin-left: 150px;" src="assets/images/user/logo2.png"   alt="">
+                <h1 class="heading mb-3">manufacturing execution system</h1>
+                <p class="para-desc"> c'est un systeme de pilotage de la production , collectant en temps réel les données de production d'une usine ou d'un atelier.</p>
+                <div class="watch-video mt-4 pt-2">
+                  <a  href="https://www.youtube.com/watch?v=YctPWZ4kr_s"
+                    class="video-play-icon watch text-dark"><i
+                      class="mdi mdi-play play-icon-circle text-center d-inline-block mr-2 rounded-circle text-white title-dark position-relative play play-iconbar"></i>
+                    WATCH VIDEO</a>
+                  <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <!-- <youtube-player [videoId]="'jNTZpfXYJa4'" height="450" width="780">
+                      </youtube-player> -->
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ng-template>
+    
+  </ngb-carousel>
+</section>
+<!--end section-->
+
+
+<!-- Services Start -->
+<section class="section">
+  <div class="container pb-lg-4 mb-md-5 mb-4">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <div class="section-title mb-4 pb-2">
+          <img style=" vertical-align: middle;
+          border-style: double;
+          border-radius: 49%;
+          width: 139px;
+          /* padding-left: 40px; */
+          margin-left: -24px;;" src="assets/images/user/logo2.png"   alt="">
+          <h1 class="title mb-4">Logiciel de gestion de production  intuitif et personnalisable</h1>
+          <p class="text-muted para-desc mb-0 mx-auto"> exécution, gestion et suivi des productions en cours dans l’atelier, superviser machines et opérateurs en fournissant une traçabilité complète des informations de fabrication.
+
+
+        </div>
+      </div>
+      <!--end col-->
+    </div>
+    <!--end row-->
+
+    <div class="row">
+      <div class="col-md-4 col-12 mt-5">
+        <div class="features text-center">
+          <div class="image position-relative d-inline-block">
+            <img src="assets/images/icons/im1.jpg" class="avatar avatar-small" alt="">
+          </div>
+
+          <div class="content mt-4">
+            <h4 class="title-2">Connectivité aux sources de données </h4>
+            <p class="text-muted mb-0">Connectivité native pour des sources de données telles que Microsoft SQL Server, Oracle, SAP, Data Historian, OPC, etc.</p>
+          </div>
+        </div>
+      </div>
+      <!--end col-->
+
+      <div class="col-md-4 col-12 mt-5">
+        <div class="features text-center">
+          <div class="image position-relative d-inline-block">
+            <img src="assets/images/icons/im2.jpg" class="avatar avatar-small" alt="">
+          </div>
+
+          <div class="content mt-4">
+            <h4 class="title-2">
+              Planification et déclenchement périodique des  Workflow </h4>
+            <p class="text-muted mb-0">Planifiez et/ou déclenchez les worflow en fonction de l'heure et de la date, des datas OPC, des alarmes et des événements, des valeurs de bases de données, des attributs de fichiers, etc.</p>
+          </div>
+        </div>
+      </div>
+      <!--end col-->
+
+      <div class="col-md-4 col-12 mt-5">
+        <div class="features text-center">
+          <div class="image position-relative d-inline-block">
+            <img src="assets/images/icons/im3.png" class="avatar avatar-small" alt="">
+          </div>
+
+          <div class="content mt-4">
+            <h4 class="title-2">Configuration centralisée des données </h4>
+            <p class="text-muted mb-0">Accédez à tous les paramètres de transaction et modifiez-les à partir d'un emplacement centralisé. Planifiez et configurez les déclencheurs et créez des expressions à réutiliser dans d'autres applications.</p>
+          </div>
+        </div>
+      </div>
+      <!--end col-->
+
+      <div class="col-md-4 col-12 mt-5">
+        <div class="features text-center">
+          <div class="image position-relative d-inline-block">
+            <img src="assets/images/icons/im4.png" class="avatar avatar-small" alt="">
+          </div>
+
+          <div class="content mt-4">
+            <h4 class="title-2">Création de Workflow rapides et intuitifs </h4>
+            <p class="text-muted mb-0"> Développez des workflow à laide d'outils graphiques très intuitifs. Utilisez le concepteur graphique de blocs de fonctions pour connecter plusieurs sources de données et définir, calculer et mettre en œuvre des règles métiers</p>
+          </div>
+        </div>
+      </div>
+      <!--end col-->
+
+      <div class="col-md-4 col-12 mt-5">
+        <div class="features text-center">
+          <div class="image position-relative d-inline-block">
+            <img src="assets/images/icons/im5.jpg" class="avatar avatar-small" alt="">
+          </div>
+
+          <div class="content mt-4">
+            <h4 class="title-2">recuperer les données des machines</h4>
+            <p class="text-muted mb-0">s’impose comme un intermédiaire entre les solutions ERP (Entreprise Ressources Planning) et le pilotage en temps réel de la production pour <br>
+              •	le comptage des références et des pièces produites<br>
+              •	l’estimation du taux de rendement<br>
+              •	la détection et l’archivage des différents arrêts : entretien, panne, approvisionnement…
+              </p>
+          </div>
+        </div>
+      </div>
+      <!--end col-->
+
+      <div class="col-md-4 col-12 mt-5">
+        <div class="features text-center">
+          <div class="image position-relative d-inline-block">
+            <img src="assets/images/icons/im6.jpg" class="avatar avatar-small" alt="">
+          </div>
+
+          <div class="content mt-4">
+            <h4 class="title-2">suivi des données </h4>
+            <p class="text-muted mb-0">Cette technologie autorise également la consultation des données stockées. Dans ce cas, il est possible de les récupérer à partir d’une interface spécifique.</p>
+          </div>
+        </div>
+      </div>
+      <!--end col-->
+    </div>
+  </div>
+  <!--end container-->
+</section>
+<!--end section-->
+<div class="position-relative">
+  <div class="shape overflow-hidden text-light">
+    <svg viewBox="0 0 2880 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M720 125L2160 0H2880V250H0V125H720Z" fill="currentColor"></path>
+    </svg>
+  </div>
+</div>
+
+<!-- End services -->
+
+<!-- News Start -->
+
+<!--end section-->
+<!-- Blog End -->
+
+<!-- Client Start -->
+
+<!-- Client End -->
+
+<!-- Contact Start -->
+
+<!--end section-->
+<!-- News End -->
+
+<!-- Back to top -->
+<!-- <a href="javascript: void(0);" class="btn btn-icon btn-soft-primary back-to-top" id="back-to-top"
+  [ngxScrollTo]="'#home'">
+  <i-feather name="arrow-up" class="icons"></i-feather>
+</a> -->
+<!-- Back to top -->

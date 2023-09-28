@@ -1,0 +1,47 @@
+
+<div class="card m-3">
+  <div class="card m-3" style="margin: 5rem !important;">
+    <h5 class="card-header" style="text-align: center;">supprimer une commande</h5>
+    <div class="card-body">
+      <form [formGroup]="registerFormsupprimer">
+        <div class="form-row" style="PADDING-LEFT: 26%;">
+          <div class="form-group col-3">
+            <label>Code commande</label>
+            <select
+              [(ngModel)]="CODEb"
+              formControlName="CODES"
+              class="form-control"
+              (change)="valueChangeCodeOf($event)"
+              [ngClass]="{ 'is-invalid': submitted && f.CODEOF.errors }"
+            >
+              <div
+                *ngIf="submitted && f.CODEOF.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.CODEOF.errors.required">CodeOf required</div>
+              </div>
+              <option [ngValue]="undefined">Select Code</option>
+              <option
+                *ngFor="let obj of ListCodeOF"
+                [ngValue]="obj.codeof"
+                [selected]="obj.codeof == selectedIdCodeof"
+              >
+                {{ obj.codeof }}
+              </option>
+            </select>
+          </div>
+
+          <div class="text-center" style="    padding-top: 4.5%;">
+            <button class="btn btn-primary mr-1" (click)="supprimercommande()">
+              supprimer
+            </button>
+            <button class="btn btn-secondary" type="reset" (click)="onReset()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

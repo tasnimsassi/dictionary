@@ -1,0 +1,171 @@
+<div class="back-to-home rounded d-none d-sm-block">
+  <a routerLink="/index" class="btn btn-icon btn-soft-primary"> </a>
+</div>
+<!-- Hero Start -->
+<section class="bg-home d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- <div class="col-lg-7 col-md-6">
+        <div class="mr-lg-5">
+          <img src="assets/images/user/finalLOGO.png" class="img-fluid d-block mx-auto" alt="">
+        </div>
+      </div> -->
+      <div class="col-lg-5 col-md-6" style="margin-left: 28%">
+        <div class="card login-page bg-white shadow rounded border-0">
+          <div class="card-body">
+            <h4 class="card-title text-center">
+              <img
+                style="
+                  vertical-align: middle;
+                  border-style: none;
+                  border-radius: 80%;
+                  width: 180px;
+                "
+                src="assets/images/user/logo2.png"
+                alt=""
+              />
+            </h4>
+<div class="sign-up-form">
+  <form [formGroup]="signupForm">
+    <div class="group">
+      <mat-form-field
+        
+        ><input
+          input
+          id="user"
+          type="text"
+          class="input"
+          placeholder="Create your Username"
+          matInput
+          formControlName="name"
+          class="input"
+          required
+        />
+        <mat-error
+          *ngIf="
+            signupForm.controls.name.touched &&
+            signupForm.controls.name.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.name.errors.required"
+            >this field is mandatory</span
+          >
+          <span *ngIf="signupForm.controls.name.errors.pattern"
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group">
+      <mat-form-field>
+       <input
+          id="pass"
+          matInput
+          formControlName="email"
+          class="input"
+          placeholder="Enter your email address"
+          required
+        />
+        <mat-error
+          *ngIf="
+            signupForm.controls.email.touched &&
+            signupForm.controls.email.invalid
+          "
+        >
+          <span *ngIf="signupForm.controls.email.errors.required"
+            >this field is mandatory</span
+          >
+          <span *ngIf="signupForm.controls.email.errors.pattern"
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group">
+      <mat-form-field
+        > 
+        <input
+          matInput
+          formControlName="contactNumber"
+          required
+          class="input"
+          placeholder="enter your phone number"
+        />
+        <mat-error
+          *ngIf="
+            signupForm.controls.contactNumber.touched &&
+            signupForm.controls.name.invalid
+          "
+        >
+          <span
+            *ngIf="
+              signupForm.controls.contactNumber.errors.required
+            "
+            >this field is mandatory</span
+          >
+          <span
+            *ngIf="
+              signupForm.controls.contactNumber.errors.pattern
+            "
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="group">
+      <mat-form-field>
+         <input
+          id="pass"
+          type="password"
+          class="input"
+          data-type="password"
+          placeholder="Create your password"
+          matInput
+          formControlName="password"
+          type="password"
+          required
+        />
+        <mat-error
+          *ngIf="
+          signupForm.controls.password.touched &&
+          signupForm.controls.password.invalid
+          "
+        >
+          <span
+            *ngIf="signupForm.controls.password.errors.required"
+            >this field is mandatory</span
+          >
+          <span *ngIf="signupForm.controls.password.errors.pattern"
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="group">
+      <input
+        type="submit"
+        class="button"
+        value="Sign up"
+        (click)="handleSubmit()"
+        [disabled]="!(signupForm.valid && signupForm.dirty)"
+      />
+    </div>
+    <div class="hr"></div>
+ 
+    <div class="foot"> <label for="tab-1"> <a routerLink="/login" class="text-dark font-weight-bold">Already Member?</a></label> </div>
+    <div class="col-12 text-center">
+                  
+      <a routerLink="/" class="text-dark font-weight-bold">return to home page</a>
+  </div>
+  </form>
+    
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div></div>
+</section>

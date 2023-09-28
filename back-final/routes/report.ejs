@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            table{
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+                td,th{
+                 border: 1px,solid #dddddd;
+                 text-align: left;
+                 padding: 8px;
+
+                }
+            
+        </style>
+    </head>
+    <body>
+        <h3 style="text-align: center;"> command executed by cofat mateur</h3>
+        <table>
+            <tr>
+                <th>name :<%= name %></th>
+                <th>email:<%= email %></th>
+            </tr>
+            <tr>
+                <th>contactNumber :<%= contactNumber %></th>
+                <th></th>
+            </tr>
+        </table>
+        
+        <h3 style="text-align: center;"> command details</h3>
+        <table>
+        <tr> ordre de fabrication</tr>
+        <tr>
+           <th>code command</th> 
+           <th><%=CODEOF %></th>
+        </tr>
+        <tr>
+            <th> project code</th>
+            <th><%=CODE_PROJET %></th>
+        </tr>
+        <tr>
+            <th>
+                quantity requested</th>
+                <th><%= QTE_OF %></th>
+        </tr>
+        <tr>
+            <th>
+                parent command</th>
+                <th><%= OF_PARENT %></th>
+        </tr>
+        <tr>
+            <th>
+                expected start date</th>
+                <th><%= DATEDEBUTOF %></th>
+        </tr>
+        <tr>
+            <th>
+                expected end date</th>
+                <th><%= DATEFINOF %></th>
+        </tr>
+        <tr>
+            <th>
+                real start date</th>
+                <th><%= DATEDEBUTREEL %></th>
+        </tr>
+        <tr>
+            <th>
+                real end date</th>
+                <th><%= DATEFINREEL %></th>
+        </tr>
+    </table>
+    <h3>thank you for your trust and  for dealing with us</h3>
+    </body>
+</html>
